@@ -548,6 +548,7 @@ GameObject:
   - component: {fileID: 136312100415221012}
   - component: {fileID: 54017396499344548}
   - component: {fileID: 114574841573470872}
+  - component: {fileID: 114749168420556602}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -625,14 +626,13 @@ GameObject:
   - component: {fileID: 4944405151223062}
   - component: {fileID: 33374171712764780}
   - component: {fileID: 23003514789334502}
-  - component: {fileID: 95913921631397494}
   m_Layer: 0
   m_Name: Glock 3d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1615262767437584
 GameObject:
   m_ObjectHideFlags: 1
@@ -1256,7 +1256,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558948861527264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 549.58453, y: 6.25, z: 452.25}
+  m_LocalPosition: {x: 14.9966, y: 2.21, z: 17.012976}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4944405151223062}
@@ -2066,7 +2066,7 @@ Camera:
   m_projectionMatrixMode: 2
   m_SensorSize: {x: 54.12, y: 25.59}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 28.970562
+  m_FocalLength: 18.273153
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -2075,7 +2075,7 @@ Camera:
     height: 1
   near clip plane: 0.5
   far clip plane: 1000
-  field of view: 47.657803
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2176,24 +2176,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!95 &95913921631397494
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1612077775479484}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a31556f0320f4df4e85f804b5f3369db, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114574841573470872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2205,16 +2187,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1fd48563cdb1347ab3456f19e78af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
   walkSpeed: 7
   runSpeed: 10
-  xLookSensitivity: 3
-  yLookSensitivity: 3
+  xLookSensitivity: 2
+  yLookSensitivity: 2
   jumpForce: 100
   maxDistance: 10.2
   forceMode: 5
   mask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114749168420556602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558948861527264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8d91a6e5dd87047a9270d88b46ea9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityProperties:
+    maxHealth: 100
+    healthRecoverRate: 10
+    regen: 0
+  playerProperties:
+    maxStamina: 100
+    maxMana: 100
+    staminaRecoveryRate: 10
+    manaRecoveryRate: 10
 --- !u!136 &136312100415221012
 CapsuleCollider:
   m_ObjectHideFlags: 1
