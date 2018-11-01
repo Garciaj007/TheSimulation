@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(AimController))]
+[RequireComponent(typeof(ShootController))]
 public class PlayerController : EntityController {
 
     public delegate void ManaLevelEventListener();

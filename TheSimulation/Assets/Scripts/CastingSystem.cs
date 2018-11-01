@@ -8,11 +8,14 @@ public struct Rules
 [System.Serializable]
 public struct SpellProperties
 {
+    public bool passive;
     public float manaCost;
     public float staminaCost;
+    public float healIndex;
     public float damage;
 }
 
+[System.Serializable]
 public abstract class Spell
 {
     protected SpellProperties properties;
@@ -21,12 +24,26 @@ public abstract class Spell
     public PlayerController Player { get; private set; }
     public SpellProperties Properties { get { return properties; } }
 
-    public abstract bool Cast(RaycastHit hit);
-
     public Spell(PlayerController player, Rules.ElementalType type)
     {
         Player = player;
         Type = type;
+    }
+
+    public virtual bool Cast(RaycastHit hit) { return true; }
+    public virtual bool Cast() { return true; }
+
+    public bool Calculate()
+    {
+        if (Player.Mana - Properties.manaCost > 0)
+        {
+            if (Player.Stamina - Properties.staminaCost > 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public bool Calculate(RaycastHit hit)
@@ -51,7 +68,7 @@ public abstract class Spell
         Player.Stamina = -Properties.staminaCost;
     }
 
-    protected void Damage(RaycastHit hit)
+    protected void InflictDamage(RaycastHit hit)
     {
         if (hit.collider.GetComponent<EntityController>())
             hit.collider.GetComponent<EntityController>().Damage(Properties.damage);

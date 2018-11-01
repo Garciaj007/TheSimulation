@@ -5,6 +5,7 @@ public class ManaField : MonoBehaviour {
     public Rigidbody manaTransform;
     public Vector3 offset;
     public Vector3 dimensions;
+    [Range(0f, 1f)]
     public float scale;
     [Range(-4f, 4f)]
     public float contrast;
@@ -20,11 +21,12 @@ public class ManaField : MonoBehaviour {
     void Start () {
         Instance = this;
         textures = new Texture2D[(int)dimensions.z];
+        offset = Random.insideUnitSphere * 100;
         manaTransform.transform.position = offset;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         manaTransform.AddForce(Random.onUnitSphere);
         offset = manaTransform.transform.position;
 
@@ -41,7 +43,7 @@ public class ManaField : MonoBehaviour {
     {
         Vector3 totalPosition = position + offset;
         Vector3 scaled = totalPosition * scale;
-        return Perlin3D(scaled.x, scaled.y, scaled.x) * contrast + level;
+        return Perlin3D(scaled.x, scaled.y, scaled.z) * contrast + level;
     }
 
     private Texture2D GenerateTexture(int z)

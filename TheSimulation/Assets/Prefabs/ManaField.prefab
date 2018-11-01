@@ -99,7 +99,7 @@ MonoBehaviour:
   manaTransform: {fileID: 54671511768579478}
   offset: {x: 0, y: 0, z: 0}
   dimensions: {x: 100, y: 100, z: 6}
-  scale: 2
+  scale: 0.1
   contrast: 3
   level: -1
   display: 0
