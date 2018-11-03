@@ -1,11 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShootController : MonoBehaviour
 {
     public delegate void SpellSwitchEventHandler();
+    public delegate void WarnEventHandler();
+    public delegate void ErrorEventHandler();
+
     public event SpellSwitchEventHandler SpellSwitched;
+    public event WarnEventHandler SpellWarned;
+    public event ErrorEventHandler SpellCrashed;
 
     public float maxDistance;
     public LayerMask mask;
@@ -27,12 +30,14 @@ public class ShootController : MonoBehaviour
         spells[0] = new Force_MoveObject(player);
         spells[1] = new Force_NeutraliseGravity(player);
         spells[2] = new Force_FlipGravity(player);
+
+        CurrentSpell = spells[0];
+        OnSpellSwitched();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(spells[index]);
         CurrentSpell = spells[index];
 
         //Check if Fire1 was pressed
@@ -47,8 +52,16 @@ public class ShootController : MonoBehaviour
                     {
                         if (spells[index].Cast(hit))
                         {
-
+                            //TO DO
                         }
+                        else
+                        {
+                            OnSpellCrashed();
+                        }
+                    }
+                    else
+                    {
+                        OnSpellWarned();
                     }
                 }
             }
@@ -58,8 +71,14 @@ public class ShootController : MonoBehaviour
                 {
                     if (spells[index].Cast())
                     {
-
+                        //TO DO
+                    } else
+                    {
+                        OnSpellCrashed();
                     }
+                } else
+                {
+                    OnSpellWarned();
                 }
             }
         }
@@ -87,8 +106,18 @@ public class ShootController : MonoBehaviour
     private void OnSpellSwitched()
     {
         if(SpellSwitched != null)
-        {
             SpellSwitched();
-        }
+    }
+
+    private void OnSpellWarned()
+    {
+        if (SpellWarned != null)
+            SpellWarned();
+    }
+
+    private void OnSpellCrashed()
+    {
+        if(SpellCrashed != null)
+            SpellCrashed();
     }
 }

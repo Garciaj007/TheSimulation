@@ -4,6 +4,8 @@ using TMPro;
 
 public class FPSUIController : MonoBehaviour {
 
+
+
     public Image manaLevelBar;
     public Image manaBar;
     public Image healthBar;
@@ -14,6 +16,11 @@ public class FPSUIController : MonoBehaviour {
     public TextMeshProUGUI staminaCost;
     public TextMeshProUGUI healsIndex;
     public TextMeshProUGUI damageIndex;
+    public TextMeshProUGUI warnMsg;
+    public TextMeshProUGUI errorMsg;
+
+    public Animator warnAnim;
+    public Animator errorAnim;
 
     public PlayerController player;
     public ShootController shooter;
@@ -23,6 +30,9 @@ public class FPSUIController : MonoBehaviour {
     private Color healthBarColor;
     private Color staminaBarColor;
 
+    private Timer warnTimer;
+    private Timer errorTimer;
+
 	// Use this for initialization
 	void Start () {
         player.ManaLevelChanged += UpdateManaLevelBar;
@@ -31,11 +41,22 @@ public class FPSUIController : MonoBehaviour {
         player.StaminaChanged += UpdateStaminaBar;
 
         shooter.SpellSwitched += UpdateSpellPanel;
+        shooter.SpellWarned += DisplayWarning;
+        shooter.SpellCrashed += DisplayError;
 
         manaLevelBarColor = manaLevelBar.color;
         manaBarColor = manaBar.color;
         healthBarColor = healthBar.color;
         staminaBarColor = staminaBar.color;
+
+        warnTimer = gameObject.AddComponent<Timer>();
+        errorTimer = gameObject.AddComponent<Timer>();
+        warnTimer.Duration = 4.0f;
+        errorTimer.Duration = 4.0f;
+        warnTimer.OneShot = true;
+        errorTimer.OneShot = true;
+        warnTimer.TimerDone += HideWarning;
+        errorTimer.TimerDone += HideError;
 	}
 
     public void UpdateManaLevelBar()
@@ -76,6 +97,50 @@ public class FPSUIController : MonoBehaviour {
         staminaCost.SetText("" + shooter.CurrentSpell.Properties.staminaCost);
         healsIndex.SetText("" + shooter.CurrentSpell.Properties.healIndex);
         damageIndex.SetText("" + shooter.CurrentSpell.Properties.damage);
+    }
+
+    public void DisplayWarning()
+    {
+        warnTimer.Restart();
+        warnMsg.text = shooter.CurrentSpell.WarnMsg;
+
+        foreach(ScrollingTextController s in GetComponents<ScrollingTextController>())
+        {
+            if(s.ID == "warn")
+            {
+                s.UpdateText();
+            }
+        }
+
+        warnAnim.SetBool("Display", true);
+        warnTimer.Begin();
+    }
+
+    public void HideWarning()
+    {
+        warnAnim.SetBool("Display", false);
+    }
+
+    public void DisplayError()
+    {
+        errorTimer.Restart();
+        errorMsg.text = shooter.CurrentSpell.ErrorMsg;
+
+        foreach (ScrollingTextController s in GetComponents<ScrollingTextController>())
+        {
+            if (s.ID == "error")
+            {
+                s.UpdateText();
+            }
+        }
+
+        errorAnim.SetBool("Display", true);
+        errorTimer.Begin();
+    }
+
+    public void HideError()
+    {
+        errorAnim.SetBool("Display", false);
     }
 
 }

@@ -13,6 +13,9 @@ public class Force_MoveObject : Spell {
         {
             hit.rigidbody.AddForce(Vector3.forward * 100f);
             return true;
+        } else
+        {
+            ErrorMsg = "CAST Failed";
         }
 
         return false;

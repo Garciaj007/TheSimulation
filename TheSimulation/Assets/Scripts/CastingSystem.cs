@@ -23,11 +23,15 @@ public abstract class Spell
     public Rules.ElementalType Type { get; private set; }
     public PlayerController Player { get; private set; }
     public SpellProperties Properties { get { return properties; } }
+    public string WarnMsg { get; private set; }
+    public string ErrorMsg { get; protected set; }
 
     public Spell(PlayerController player, Rules.ElementalType type)
     {
         Player = player;
         Type = type;
+        WarnMsg = "NULLMSG";
+        ErrorMsg = "NULLMSG";
     }
 
     public virtual bool Cast(RaycastHit hit) { return true; }
@@ -40,7 +44,13 @@ public abstract class Spell
             if (Player.Stamina - Properties.staminaCost > 0)
             {
                 return true;
+            } else
+            {
+                WarnMsg = "Low Energy";
             }
+        } else
+        {
+            WarnMsg = "Not Enough Mana";
         }
 
         return false;
@@ -55,8 +65,17 @@ public abstract class Spell
                 if (Player.Stamina - Properties.staminaCost > 0)
                 {
                     return true;
+                } else
+                {
+                    WarnMsg = "Low Energy";
                 }
+            } else
+            {
+                WarnMsg = "Low Mana";
             }
+        } else
+        {
+            WarnMsg = "No Target Found";
         }
 
         return false;

@@ -15,13 +15,17 @@ public class Timer : MonoBehaviour {
 	void Update () {
         if (active)
         {
-            if(elapsed >= Duration)
+            if(elapsed > Duration)
             {
                 OnTimerDone();
 
                 if (OneShot)
                     Pause();
+                else
+                    Restart();
             }
+
+            elapsed += Time.deltaTime;
         }
 	}
 
