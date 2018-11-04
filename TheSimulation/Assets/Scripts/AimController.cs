@@ -2,49 +2,43 @@
 
 public class AimController : MonoBehaviour {
 
+    //Public Members
+    //Speed of rotation
     public Vector2 lookSensitivity;
-    public float SmoothDamping;
+    //Damping the jitter of mouse movement
+    [Range(0, 0.2f)]
+    public float smoothDamp;
 
-    private float xRotation, yRotation;
-    private float currentXRot, currentYRot;
-    private float xRotVelocity, yRotVelocity;
-
+    //Private Members
     private Camera playerCam;
     private Rigidbody rigid;
-    private Vector3 rotation, cameraRotation;
+    private float xRotation, yRotation;
+    private float smoothedXRot, smoothedYRot;
+    private float xRotVelocity, yRotVelocity;
 
-	// Use this for initialization
 	void Start () {
         playerCam = GetComponentInChildren<Camera>();
         rigid = GetComponent<Rigidbody>();
-
-        Cursor.visible = false;
+        Cursor.visible = false; // Hide Cursor
     }
 	
-	// Update is called once per frame
 	void Update () {
-        //Calculate vertical & horizontal rotation * the look Sensitivity;
-        rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0) * lookSensitivity.x;
-        cameraRotation = new Vector3(Input.GetAxis("Mouse Y"), 0, 0) * lookSensitivity.y;
+        //Original Rotation
+        xRotation += Input.GetAxis("Mouse Y") * lookSensitivity.y;
+        yRotation += Input.GetAxis("Mouse X") * lookSensitivity.x;
+
+        //Maximum X rotation
+        xRotation = Mathf.Clamp(xRotation, -80, 80);
+
+        //Smoothed Rotation by Smooth Damp
+        smoothedXRot = Mathf.SmoothDamp(smoothedXRot, xRotation, ref xRotVelocity, smoothDamp);
+        smoothedYRot = Mathf.SmoothDamp(smoothedYRot, yRotation, ref yRotVelocity, smoothDamp);
     }
 
     private void FixedUpdate()
     {
-        //Rotating the player horizontaly
-        rigid.MoveRotation(rigid.rotation * Quaternion.Euler(rotation));
-
-        //Rotating the camera vertically
-        if (playerCam != null)
-        {
-            playerCam.transform.Rotate(-cameraRotation);
-            if (playerCam.transform.localRotation.x > 0.5)
-            {
-                playerCam.transform.localRotation = new Quaternion(0.55f, 0, 0, playerCam.transform.localRotation.w);
-            }
-            if (playerCam.transform.localRotation.x < -0.5)
-            {
-                playerCam.transform.localRotation = new Quaternion(-0.55f, 0, 0, playerCam.transform.localRotation.w);
-            }
-        }
+        //Rotate camera and player
+        rigid.rotation = Quaternion.Euler(0, smoothedYRot, 0);
+        playerCam.transform.rotation = Quaternion.Euler(-smoothedXRot, smoothedYRot, 0);
     }
 }

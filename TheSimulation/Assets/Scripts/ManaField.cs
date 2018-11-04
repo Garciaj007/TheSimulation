@@ -2,6 +2,7 @@
 
 public class ManaField : MonoBehaviour {
 
+    //Public Members
     public Rigidbody manaTransform;
     public Vector3 offset;
     public Vector3 dimensions;
@@ -15,9 +16,10 @@ public class ManaField : MonoBehaviour {
     public bool display;
     public Texture2D[] textures;
 
+    //Properties
+    //Singleton
     public static ManaField Instance { get; private set; }
 
-    // Use this for initialization
     void Start () {
         Instance = this;
         textures = new Texture2D[(int)dimensions.z];
@@ -25,11 +27,12 @@ public class ManaField : MonoBehaviour {
         manaTransform.transform.position = offset;
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate () {
+        //Simulates "Fluid Motion"
         manaTransform.AddForce(Random.onUnitSphere);
         offset = manaTransform.transform.position;
 
+        //For Debugging Purposes
         if (display)
         {
             for(int i = 0; i < dimensions.z; i++)
@@ -39,6 +42,7 @@ public class ManaField : MonoBehaviour {
         }
 	}
 
+    //Get the Mana sample via current position
     public float GetManaSample(Vector3 position)
     {
         Vector3 totalPosition = position + offset;
@@ -46,6 +50,7 @@ public class ManaField : MonoBehaviour {
         return Perlin3D(scaled.x, scaled.y, scaled.z) * contrast + level;
     }
 
+    //Debugging: Creates a Texture Map with Z defining height
     private Texture2D GenerateTexture(int z)
     {
         Texture2D texture = new Texture2D((int)dimensions.x, (int)dimensions.y);
@@ -61,6 +66,7 @@ public class ManaField : MonoBehaviour {
         return texture;
     }
 
+    //Debugging: Calculates color of perlin Map
     private Color CalculateColor(int x, int y, int z)
     {
         float xCoord = x / dimensions.x;
@@ -71,6 +77,7 @@ public class ManaField : MonoBehaviour {
         return new Color(sample, sample, sample);
     }
 
+    //Creates a 3D perlin Map
     private float Perlin3D(float x, float y, float z)
     {
         float AB = Mathf.PerlinNoise(x, y);

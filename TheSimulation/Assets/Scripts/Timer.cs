@@ -1,54 +1,53 @@
 ﻿using UnityEngine;
 
-public class Timer : MonoBehaviour {
-
+public class Timer : MonoBehaviour
+{
+    //Delegates & Events
     public delegate void TimerEventHandler();
     public event TimerEventHandler TimerDone;
 
+    //Private Members
     private float elapsed = 0;
     private bool active = false;
 
+    //Properties
     public float Duration { private get; set; }
     public bool OneShot { get; set; }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Update()
+    {
+        //if running
         if (active)
         {
-            if(elapsed > Duration)
+            //if the elapsed time is greater than duration
+            if (elapsed > Duration)
             {
                 OnTimerDone();
 
+                //if only once
                 if (OneShot)
                     Pause();
                 else
                     Restart();
             }
-
+            //update time by deltaTime
             elapsed += Time.deltaTime;
         }
-	}
-
-    public void Begin()
-    {
-        active = true;
     }
 
-    public void Pause()
-    {
-        active = false;
-    } 
+    //Starts timer
+    public void Begin() { active = true; }
 
-    public void UnPause()
-    {
-        active = true;
-    }
+    //Pauses timer 
+    public void Pause() { active = false; }
 
-    public void Restart()
-    {
-        elapsed = 0;
-    }
+    //Resumes Timer
+    public void UnPause() { active = true; }
 
+    //Sets time back to 0 
+    public void Restart() { elapsed = 0; }
+
+    //When the timer is done
     public void OnTimerDone()
     {
         if (TimerDone != null)

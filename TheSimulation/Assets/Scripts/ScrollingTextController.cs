@@ -3,6 +3,8 @@ using TMPro;
 using System.Collections;
 public class ScrollingTextController : MonoBehaviour {
 
+    //WASTE OF TIME IGNORE
+
     public TextMeshProUGUI text;
     [Range(0f, 10f)]
     public float speed;

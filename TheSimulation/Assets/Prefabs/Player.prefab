@@ -718,10 +718,10 @@ GameObject:
   - component: {fileID: 4263845378143082}
   - component: {fileID: 136312100415221012}
   - component: {fileID: 54017396499344548}
-  - component: {fileID: 114574841573470872}
   - component: {fileID: 114749168420556602}
   - component: {fileID: 114451299965046468}
   - component: {fileID: 114753079038459280}
+  - component: {fileID: 114198022301897178}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -805,7 +805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1612934443899370
 GameObject:
   m_ObjectHideFlags: 1
@@ -2346,7 +2346,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1612077775479484}
   m_LocalRotation: {x: 0.5000015, y: 0.5000015, z: 0.49999854, w: 0.49999854}
-  m_LocalPosition: {x: 0.062, y: 0.697, z: 0.564}
+  m_LocalPosition: {x: 0.194, y: 0.679, z: 0.474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4263845378143082}
@@ -2560,7 +2560,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!81 &81484906112712376
 AudioListener:
@@ -2834,6 +2834,24 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114198022301897178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558948861527264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5cd4ea96fe92545ba2018ac36583c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkAccel: 5000
+  walkDeccel: 5
+  airResistence: 0.2
+  maxWalkSpeed: 5
+  jumpForce: 300
+  maxSlope: 60
+  forceMode: 5
 --- !u!114 &114256228223601684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3530,21 +3548,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114574841573470872
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1558948861527264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c1fd48563cdb1347ab3456f19e78af7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 8
-  runSpeed: 12
-  jumpForce: 100
-  forceMode: 5
 --- !u!114 &114621186177257946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3608,6 +3611,7 @@ MonoBehaviour:
     maxMana: 100
     staminaRecoveryRate: 10
     manaRecoveryRate: 10
+    staminaUsageRate: 10
 --- !u!114 &114753079038459280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3620,7 +3624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookSensitivity: {x: 3, y: 3}
-  SmoothDamping: 10
+  smoothDamp: 0.1
 --- !u!114 &114791617660069104
 MonoBehaviour:
   m_ObjectHideFlags: 1

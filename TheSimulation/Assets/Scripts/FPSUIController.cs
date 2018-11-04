@@ -3,14 +3,15 @@ using UnityEngine.UI;
 using TMPro;
 
 public class FPSUIController : MonoBehaviour {
+    //Public Members
 
-
-
+    //Images
     public Image manaLevelBar;
     public Image manaBar;
     public Image healthBar;
     public Image staminaBar;
 
+    //TextMeshPros
     public TextMeshProUGUI spellName;
     public TextMeshProUGUI manaCost;
     public TextMeshProUGUI staminaCost;
@@ -19,22 +20,28 @@ public class FPSUIController : MonoBehaviour {
     public TextMeshProUGUI warnMsg;
     public TextMeshProUGUI errorMsg;
 
+    //Animators
     public Animator warnAnim;
     public Animator errorAnim;
 
+    //Controllers
     public PlayerController player;
     public ShootController shooter;
 
+    //Colors 
     private Color manaLevelBarColor;
     private Color manaBarColor;
     private Color healthBarColor;
     private Color staminaBarColor;
 
+    //Private Members
+
+    //Timers
     private Timer warnTimer;
     private Timer errorTimer;
 
-	// Use this for initialization
 	void Start () {
+        //Attach Signature
         player.ManaLevelChanged += UpdateManaLevelBar;
         player.ManaChanged += UpdateManaBar;
         player.HealthChanged += UpdateHealthBar;
@@ -44,11 +51,13 @@ public class FPSUIController : MonoBehaviour {
         shooter.SpellWarned += DisplayWarning;
         shooter.SpellCrashed += DisplayError;
 
+        //Set colors to original color
         manaLevelBarColor = manaLevelBar.color;
         manaBarColor = manaBar.color;
         healthBarColor = healthBar.color;
         staminaBarColor = staminaBar.color;
 
+        //Timer stuff
         warnTimer = gameObject.AddComponent<Timer>();
         errorTimer = gameObject.AddComponent<Timer>();
         warnTimer.Duration = 4.0f;
@@ -59,6 +68,7 @@ public class FPSUIController : MonoBehaviour {
         errorTimer.TimerDone += HideError;
 	}
 
+    //Updates Mana Level Bar 
     public void UpdateManaLevelBar()
     {
         float amount = player.ManaLevel;
@@ -66,32 +76,34 @@ public class FPSUIController : MonoBehaviour {
         manaLevelBar.color = Color.Lerp(manaLevelBarColor, new Color(1, 1, 1, 0.05f), amount);
     }
 
+    //Updates Mana Bar 
     public void UpdateManaBar()
     {
         float amount = player.Mana / player.PlayerProperties.maxMana;
-        Color c = manaBar.color;
         manaBar.fillAmount = amount;
         manaBar.color = Color.Lerp(manaBarColor, new Color(1, 1, 1, 0.05f), amount);
     }
 
+    //Updates Health Bar 
     public void UpdateHealthBar()
     {
         float amount = player.Health / player.EntityProperties.maxHealth;
-        Color c = healthBar.color;
         healthBar.fillAmount = amount;
         healthBar.color = Color.Lerp(healthBarColor, new Color(1, 1, 1, 0.05f), amount);
     }
 
+    //Updates Stamina Bar 
     public void UpdateStaminaBar()
     {
         float amount = player.Stamina / player.PlayerProperties.maxStamina;
-        Color c = staminaBar.color;
         staminaBar.fillAmount = amount;
         staminaBar.color = Color.Lerp(staminaBarColor, new Color(1, 1, 1, 0.05f), amount);
     }
 
+    //Updates Spell Selection Panel 
     public void UpdateSpellPanel()
     {
+        //Sets text to Spell Properties
         spellName.SetText(shooter.CurrentSpell.ToString());
         manaCost.SetText("" + shooter.CurrentSpell.Properties.manaCost);
         staminaCost.SetText("" + shooter.CurrentSpell.Properties.staminaCost);
@@ -99,6 +111,7 @@ public class FPSUIController : MonoBehaviour {
         damageIndex.SetText("" + shooter.CurrentSpell.Properties.damage);
     }
 
+    //Displays Warning
     public void DisplayWarning()
     {
         warnTimer.Restart();
@@ -116,11 +129,13 @@ public class FPSUIController : MonoBehaviour {
         warnTimer.Begin();
     }
 
+    //Hide Warning
     public void HideWarning()
     {
         warnAnim.SetBool("Display", false);
     }
 
+    //Displays Error 
     public void DisplayError()
     {
         errorTimer.Restart();
@@ -138,6 +153,7 @@ public class FPSUIController : MonoBehaviour {
         errorTimer.Begin();
     }
 
+    //Hides Error
     public void HideError()
     {
         errorAnim.SetBool("Display", false);

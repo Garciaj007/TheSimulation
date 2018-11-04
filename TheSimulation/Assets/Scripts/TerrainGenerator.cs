@@ -2,6 +2,8 @@
 
 public class TerrainGenerator : MonoBehaviour {
 
+    //IGNORE
+
     public int depth = 20;
     public int width = 256;
     public int height = 256;
