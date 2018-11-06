@@ -5,10 +5,14 @@ using UnityEngine;
 public class MovementController : MonoBehaviour {
 
     //Public Members
+    [Header("Acceleration")]
     public float walkAccel = 2000f;
     public float walkDeccel = 5f;
-    public float airResistence = 0.2f;
+    [Header("Max Speed")]
     public float maxWalkSpeed = 10f;
+    public float maxRunSpeed = 15f;
+    [Space]
+    public float airResistence = 0.2f;
     public float jumpForce = 300f;
     public float maxSlope = 60f;
     public ForceMode forceMode;
@@ -25,13 +29,21 @@ public class MovementController : MonoBehaviour {
 
     private void Update()
     {
+        float maxSpeed = 0;
+
+        //If Running change max speed
+        if (Input.GetKey(KeyCode.LeftShift))
+            maxSpeed = maxRunSpeed;
+        else
+            maxSpeed = maxWalkSpeed;
+
         //Gets the players movement speed
         movement = new Vector2(rigid.velocity.x, rigid.velocity.z);
 
         //limits the players walk speed
-        if (movement.magnitude > maxWalkSpeed)
+        if (movement.magnitude > maxSpeed)
         {
-            movement = movement.normalized * maxWalkSpeed;
+            movement = movement.normalized * maxSpeed;
         }
     }
 

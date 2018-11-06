@@ -722,6 +722,7 @@ GameObject:
   - component: {fileID: 114451299965046468}
   - component: {fileID: 114753079038459280}
   - component: {fileID: 114198022301897178}
+  - component: {fileID: 114625741709411454}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2845,10 +2846,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5cd4ea96fe92545ba2018ac36583c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkAccel: 5000
+  walkAccel: 1000
   walkDeccel: 5
-  airResistence: 0.2
   maxWalkSpeed: 5
+  maxRunSpeed: 10
+  airResistence: 0.2
   jumpForce: 300
   maxSlope: 60
   forceMode: 5
@@ -3564,6 +3566,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114625741709411454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558948861527264}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6a38cc7a66c84cabbdd96fdd87d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114673379343984148
 MonoBehaviour:
   m_ObjectHideFlags: 1
