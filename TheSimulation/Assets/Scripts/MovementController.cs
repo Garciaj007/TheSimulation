@@ -6,8 +6,8 @@ public class MovementController : MonoBehaviour {
 
     //Public Members
     [Header("Acceleration")]
-    public float walkAccel = 2000f;
-    public float walkDeccel = 5f;
+    public float acceleration = 2000f;
+    public float decceleration = 5f;
     [Header("Max Speed")]
     public float maxWalkSpeed = 10f;
     public float maxRunSpeed = 15f;
@@ -55,18 +55,18 @@ public class MovementController : MonoBehaviour {
         //Deccelerates the player
         if (isGrounded)
         {
-            rigid.velocity = new Vector3(Mathf.SmoothDamp(rigid.velocity.x, 0, ref walkDeccelVelx, walkDeccel), rigid.velocity.y, Mathf.SmoothDamp(rigid.velocity.z, 0, ref walkDeccelVelz, walkDeccel));
+            rigid.velocity = new Vector3(Mathf.SmoothDamp(rigid.velocity.x, 0, ref walkDeccelVelx, decceleration), rigid.velocity.y, Mathf.SmoothDamp(rigid.velocity.z, 0, ref walkDeccelVelz, decceleration));
         }
 
         if (isGrounded)
-            //Moves Player
-            rigid.AddRelativeForce(Input.GetAxis("Horizontal") * walkAccel, 0, Input.GetAxis("Vertical") * walkAccel, forceMode);
+            //Accelerates the Player
+            rigid.AddRelativeForce(Input.GetAxis("Horizontal") * acceleration, 0, Input.GetAxis("Vertical") * acceleration, forceMode);
         else
             //Restricts movement while in the air
-            rigid.AddRelativeForce(Input.GetAxis("Horizontal") * walkAccel * airResistence, 0, Input.GetAxis("Vertical") * walkAccel * airResistence, forceMode);
+            rigid.AddRelativeForce(Input.GetAxis("Horizontal") * acceleration * airResistence, 0, Input.GetAxis("Vertical") * acceleration * airResistence, forceMode);
 
         //Jumping
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && isGrounded)
             rigid.AddForce(Vector3.up * jumpForce, forceMode);
     }
 

@@ -13,7 +13,7 @@ public class EntityController : MonoBehaviour {
 
     //Properties
     public Rules.ElementalType Type { get; private set; }
-    public EntityProperties EntityProperties { get { return entityProperties; } }
+    public EntityProperties EntityProperties { get { return entityProperties; } set { entityProperties = value; } }
 
     public float Health
     {

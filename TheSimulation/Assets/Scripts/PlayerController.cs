@@ -21,7 +21,7 @@ public class PlayerController : EntityController {
 
     //Properties
     public bool UsingStamina { get; set; }
-    public PlayerProperties PlayerProperties { get { return playerProperties; } }
+    public PlayerProperties PlayerProperties { get { return playerProperties; } set { playerProperties = value; } }
 
     /*Note Checks if 0 < var < max */
     public float ManaLevel
