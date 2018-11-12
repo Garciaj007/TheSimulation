@@ -38,10 +38,12 @@ public class ShootController : MonoBehaviour
         cooldown.TimerDone += Shoot;
 
         //Add Spells
-        spells = new Spell[3];
+        spells = new Spell[5];
         spells[0] = new Force_MoveObject(player);
         spells[1] = new Force_NeutraliseGravity(player);
         spells[2] = new Force_FlipGravity(player);
+        spells[3] = new Ice_Freeze(player);
+        spells[4] = new Fire_Burn(player);
 
         //Get Current Spell
         CurrentSpell = spells[0];

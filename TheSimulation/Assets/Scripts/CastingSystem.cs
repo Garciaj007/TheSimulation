@@ -4,7 +4,7 @@
 public struct Rules
 {
     //Spell Type
-    public enum ElementalType : int {Fire, Water, Ice, Wind, Earth, Time, Force}
+    public enum ElementalType : int { Fire, Water, Ice, Wind, Earth, Time, Force }
 }
 
 //Spell Properties
@@ -13,7 +13,7 @@ public struct SpellProperties
 {
     public bool continuos; //is run more than once
     public bool passive; //does not require target
-    public float manaCost; 
+    public float manaCost;
     public float staminaCost;
     public float healIndex; //# of heals
     public float damage;
@@ -57,11 +57,13 @@ public abstract class Spell
             if (Player.Stamina - Properties.staminaCost > 0)
             {
                 return true; //Success
-            } else
+            }
+            else
             {
                 WarnMsg = "Low Energy";
             }
-        } else
+        }
+        else
         {
             WarnMsg = "Not Enough Mana";
         }
@@ -82,15 +84,18 @@ public abstract class Spell
                 if (Player.Stamina - Properties.staminaCost > 0)
                 {
                     return true; //Success
-                } else
+                }
+                else
                 {
                     WarnMsg = "Low Energy";
                 }
-            } else
+            }
+            else
             {
                 WarnMsg = "Low Mana";
             }
-        } else
+        }
+        else
         {
             WarnMsg = "No Target Found";
         }

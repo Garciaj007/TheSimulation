@@ -7,18 +7,26 @@ public class EntityController : MonoBehaviour {
     public event HealthEventListener HealthChanged;
 
     //Protected Members
+    [SerializeField]
     protected float health;
+    [SerializeField]
+    protected Rules.ElementalType type;
     [SerializeField]
     protected EntityProperties entityProperties;
 
     //Properties
-    public Rules.ElementalType Type { get; private set; }
+    public Rules.ElementalType Type { get { return type; } }
     public EntityProperties EntityProperties { get { return entityProperties; } set { entityProperties = value; } }
 
     public float Health
     {
         get { return health; }
         set { if (health + value > EntityProperties.maxHealth) health = EntityProperties.maxHealth; else if (health + value < 0) health = 0; else health += value; OnHealthChanged(); }
+    }
+
+    protected virtual void Start()
+    {
+        Reset();
     }
 
 	protected virtual void Update () {
@@ -47,6 +55,11 @@ public class EntityController : MonoBehaviour {
     public void Damage(float amount)
     {
         Health = -amount;
+    }
+
+    protected virtual void Reset()
+    {
+        Health = EntityProperties.maxHealth + 1;
     }
 
     //When Health is changed

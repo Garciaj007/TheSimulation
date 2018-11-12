@@ -20,7 +20,7 @@ public class Force_MoveObject : Spell {
             return true;
         } else
         {
-            ErrorMsg = "CAST Failed";
+            ErrorMsg = "CAST Failed : No Force Contained";
         }
 
         return false;
@@ -45,7 +45,7 @@ public class Force_NeutraliseGravity : Spell
             return true;
         } else
         {
-            ErrorMsg = "CAST Failed";
+            ErrorMsg = "CAST Failed : No Force Contained";
         }
 
         return false;
@@ -59,6 +59,7 @@ public class Force_FlipGravity : Spell
     {
         properties.manaCost = 10f;
         properties.staminaCost = 10f;
+        properties.cooldown = Time.deltaTime;
         properties.continuos = false;
         properties.passive = false;
     }
@@ -73,7 +74,7 @@ public class Force_FlipGravity : Spell
             return true;
         } else
         {
-            ErrorMsg = "CAST Failed";
+            ErrorMsg = "CAST Failed : No Force Contained";
         }
 
         return false;
@@ -85,12 +86,61 @@ public class Ice_Freeze : Spell
 {
     public Ice_Freeze(PlayerController p) : base (p, Rules.ElementalType.Ice)
     {
-        properties.manaCost = 10f;
-        properties.staminaCost = 10f;
+        properties.manaCost = 2f;
+        properties.staminaCost = 1f;
+        properties.cooldown = Time.deltaTime;
+        properties.continuos = true;
+        properties.passive = false;
     }
 
     public override bool Cast(RaycastHit hit)
     {
-        throw new System.NotImplementedException();
+        EntityController e = hit.collider.GetComponent<EntityController>();
+        if(e.Type == Rules.ElementalType.Fire)
+        {
+            Use();
+            e.Damage(10);
+            return true;
+        }
+        if(e.Type == Rules.ElementalType.Ice)
+        {
+            Use();
+            e.Heal(10);
+            return true;
+        }
+        ErrorMsg = "CAST Failed : Improper Cast Type";
+        return false;
     }
 }
+
+public class Fire_Burn : Spell
+{
+    public Fire_Burn(PlayerController p) : base(p, Rules.ElementalType.Fire)
+    {
+        properties.manaCost = 2f;
+        properties.staminaCost = 1f;
+        properties.cooldown = Time.deltaTime;
+        properties.continuos = true;
+        properties.passive = false;
+    }
+
+    public override bool Cast(RaycastHit hit)
+    {
+        EntityController e = hit.collider.GetComponent<EntityController>();
+        if (e.Type == Rules.ElementalType.Ice)
+        {
+            Use();
+            e.Damage(10);
+            return true;
+        }
+        if (e.Type == Rules.ElementalType.Fire)
+        {
+            Use();
+            e.Heal(10);
+            return true;
+        }
+        ErrorMsg = "CAST Failed : Improper Cast Type";
+        return false;
+    }
+}
+
