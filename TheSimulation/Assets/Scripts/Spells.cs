@@ -86,8 +86,8 @@ public class Ice_Freeze : Spell
 {
     public Ice_Freeze(PlayerController p) : base (p, Rules.ElementalType.Ice)
     {
-        properties.manaCost = 2f;
-        properties.staminaCost = 1f;
+        properties.manaCost = 0.5f;
+        properties.staminaCost = 0.2f;
         properties.cooldown = Time.deltaTime;
         properties.continuos = true;
         properties.passive = false;
@@ -99,13 +99,13 @@ public class Ice_Freeze : Spell
         if(e.Type == Rules.ElementalType.Fire)
         {
             Use();
-            e.Damage(10);
+            e.Damage(1f);
             return true;
         }
         if(e.Type == Rules.ElementalType.Ice)
         {
             Use();
-            e.Heal(10);
+            e.Heal(1f);
             return true;
         }
         ErrorMsg = "CAST Failed : Improper Cast Type";
@@ -117,8 +117,8 @@ public class Fire_Burn : Spell
 {
     public Fire_Burn(PlayerController p) : base(p, Rules.ElementalType.Fire)
     {
-        properties.manaCost = 2f;
-        properties.staminaCost = 1f;
+        properties.manaCost = 0.5f;
+        properties.staminaCost = 0.2f;
         properties.cooldown = Time.deltaTime;
         properties.continuos = true;
         properties.passive = false;
@@ -130,13 +130,13 @@ public class Fire_Burn : Spell
         if (e.Type == Rules.ElementalType.Ice)
         {
             Use();
-            e.Damage(10);
+            e.Damage(1f);
             return true;
         }
         if (e.Type == Rules.ElementalType.Fire)
         {
             Use();
-            e.Heal(10);
+            e.Heal(1f);
             return true;
         }
         ErrorMsg = "CAST Failed : Improper Cast Type";

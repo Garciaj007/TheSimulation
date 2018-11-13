@@ -8,11 +8,13 @@ public class EntityController : MonoBehaviour {
 
     //Protected Members
     [SerializeField]
-    protected float health;
+    protected float health, deathDelay;
     [SerializeField]
     protected Rules.ElementalType type;
     [SerializeField]
     protected EntityProperties entityProperties;
+
+    protected Timer deathTimer;
 
     //Properties
     public Rules.ElementalType Type { get { return type; } }
@@ -26,13 +28,19 @@ public class EntityController : MonoBehaviour {
 
     protected virtual void Start()
     {
+        deathTimer = gameObject.AddComponent<Timer>();
+        deathTimer.Duration = deathDelay;
+        deathTimer.TimerDone += Destroy;
+        deathTimer.OneShot = true;
+
         Reset();
     }
 
 	protected virtual void Update () {
-		if(Health < 0)
+		if(Health <= 0)
         {
             //Do Something...
+            deathTimer.Begin();
         }
 
         if (EntityProperties.regen)
@@ -55,6 +63,12 @@ public class EntityController : MonoBehaviour {
     public void Damage(float amount)
     {
         Health = -amount;
+    }
+
+    protected virtual void Destroy()
+    {
+        deathTimer.TimerDone -= Destroy;
+        Destroy(gameObject);
     }
 
     protected virtual void Reset()

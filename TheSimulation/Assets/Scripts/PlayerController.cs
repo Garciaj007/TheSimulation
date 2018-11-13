@@ -42,7 +42,7 @@ public class PlayerController : EntityController {
         set { if (stamina + value > PlayerProperties.maxStamina) stamina = PlayerProperties.maxStamina; else if (stamina + value < 0) stamina = 0; else stamina += value; OnStaminaChanged(); }
     }
 
-    protected void Start () {
+    protected override void Start () {
         Reset();
 	}
 	
@@ -69,7 +69,7 @@ public class PlayerController : EntityController {
     }
 
     //Resets Properties
-    protected void Reset()
+    protected override void Reset()
     {
         Health = EntityProperties.maxHealth + 1;
         Mana = PlayerProperties.maxMana;
