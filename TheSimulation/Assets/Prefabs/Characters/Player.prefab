@@ -3615,6 +3615,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8d91a6e5dd87047a9270d88b46ea9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  deathDelay: 0
+  type: 0
   entityProperties:
     maxHealth: 100
     healthRecoverRate: 10
