@@ -4,7 +4,10 @@ public class EntityController : MonoBehaviour {
 
     //Delegates & Events
     public delegate void HealthEventListener();
+    public delegate void DeathEventListener();
+
     public event HealthEventListener HealthChanged;
+    public event DeathEventListener Death;
 
     //Protected Members
     [SerializeField]
@@ -14,7 +17,7 @@ public class EntityController : MonoBehaviour {
     [SerializeField]
     protected EntityProperties entityProperties;
 
-    protected Timer deathTimer;
+    protected Timer destroyTimer;
 
     //Properties
     public Rules.ElementalType Type { get { return type; } }
@@ -23,26 +26,20 @@ public class EntityController : MonoBehaviour {
     public float Health
     {
         get { return health; }
-        set { if (health + value > EntityProperties.maxHealth) health = EntityProperties.maxHealth; else if (health + value < 0) health = 0; else health += value; OnHealthChanged(); }
+        set { if (health + value > EntityProperties.maxHealth) { health = EntityProperties.maxHealth; } else if (health + value < 0) { health = 0; OnDeath(); } else { health += value; OnHealthChanged(); } }
     }
 
     protected virtual void Start()
     {
-        deathTimer = gameObject.AddComponent<Timer>();
-        deathTimer.Duration = deathDelay;
-        deathTimer.TimerDone += Destroy;
-        deathTimer.OneShot = true;
+        destroyTimer = gameObject.AddComponent<Timer>();
+        destroyTimer.Duration = deathDelay;
+        destroyTimer.TimerDone += Destroy;
+        destroyTimer.OneShot = true;
 
         Reset();
     }
 
 	protected virtual void Update () {
-		if(Health <= 0)
-        {
-            //Do Something...
-            deathTimer.Begin();
-        }
-
         if (EntityProperties.regen)
             Health = 0.01f * EntityProperties.healthRecoverRate;
 	}
@@ -67,9 +64,10 @@ public class EntityController : MonoBehaviour {
 
     protected virtual void Destroy()
     {
-        deathTimer.TimerDone -= Destroy;
+        destroyTimer.TimerDone -= Destroy;
         Destroy(gameObject);
     }
+
 
     protected virtual void Reset()
     {
@@ -81,6 +79,18 @@ public class EntityController : MonoBehaviour {
     {
         if (HealthChanged != null)
             HealthChanged();
+    }
+
+    //When the Entities Health Reaches 0
+    protected void OnDeath()
+    {
+        //Destroys Game Object after amount of time
+        destroyTimer.Begin();
+
+        if (Death != null)
+        {
+            Death();
+        }
     }
 }
 

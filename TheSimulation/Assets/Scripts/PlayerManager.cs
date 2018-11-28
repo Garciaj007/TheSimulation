@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
+//This is used for alterating the properties of each player, In addition to refrencing to the player might not use
+
 public class PlayerManager : MonoBehaviour {
 
+    private EntityController entity;
     private PlayerController player;
     private AimController aim;
     private ShootController shooter;
@@ -18,6 +21,7 @@ public class PlayerManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        entity = GetComponent<EntityController>();
         player = GetComponent<PlayerController>();
         movement = GetComponent<MovementController>();
         shooter = GetComponent<ShootController>();
@@ -37,7 +41,7 @@ public class PlayerManager : MonoBehaviour {
         airResistance = movement.airResistence;
 
         playerProp = player.PlayerProperties;
-        entityProp = player.EntityProperties;
+        entityProp = entity.EntityProperties;
     }
 
     //--------------------------------------------------------- AimController Manipulator ------------------------------------------------------
@@ -112,12 +116,12 @@ public class PlayerManager : MonoBehaviour {
 
     public void SetEntityProperties(EntityProperties prop)
     {
-        player.EntityProperties = prop;
+        entity.EntityProperties = prop;
     }
 
     public void ResetEntityProperties()
     {
-        player.EntityProperties = entityProp;
+        entity.EntityProperties = entityProp;
     }
 
 }

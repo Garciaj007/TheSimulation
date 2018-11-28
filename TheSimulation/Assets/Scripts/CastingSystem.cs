@@ -29,6 +29,7 @@ public abstract class Spell
 
     //Properties
     public Rules.ElementalType Type { get; private set; } //Element Type
+    public EntityController Entity { get; private set; }
     public PlayerController Player { get; private set; } //Player Controller attached to
     public SpellProperties Properties { get { return properties; } }  //Spell Properties 
     public string WarnMsg { get; private set; } //Msg to be display (WARN)
@@ -37,6 +38,7 @@ public abstract class Spell
     //Constructor
     public Spell(PlayerController player, Rules.ElementalType type)
     {
+        Entity = player.GetComponent<EntityController>();
         Player = player;
         Type = type;
         WarnMsg = "NULLMSG";
@@ -115,9 +117,6 @@ public abstract class Spell
     {
         if (hit.collider.GetComponent<EntityController>())
             hit.collider.GetComponent<EntityController>().Damage(Properties.damage);
-
-        if (hit.collider.GetComponent<PlayerController>())
-            hit.collider.GetComponent<PlayerController>().Damage(Properties.damage);
     }
 }
 

@@ -26,6 +26,7 @@ public class FPSUIController : MonoBehaviour {
 
     //Controllers
     public PlayerController player;
+    public EntityController entity;
     public ShootController shooter;
 
     //Colors 
@@ -44,7 +45,7 @@ public class FPSUIController : MonoBehaviour {
         //Attach Signature
         player.ManaLevelChanged += UpdateManaLevelBar;
         player.ManaChanged += UpdateManaBar;
-        player.HealthChanged += UpdateHealthBar;
+        entity.HealthChanged += UpdateHealthBar;
         player.StaminaChanged += UpdateStaminaBar;
 
         shooter.SpellSwitched += UpdateSpellPanel;
@@ -87,7 +88,7 @@ public class FPSUIController : MonoBehaviour {
     //Updates Health Bar 
     public void UpdateHealthBar()
     {
-        float amount = player.Health / player.EntityProperties.maxHealth;
+        float amount = entity.Health / entity.EntityProperties.maxHealth;
         healthBar.fillAmount = amount;
         healthBar.color = Color.Lerp(healthBarColor, new Color(1, 1, 1, 0.05f), amount);
     }

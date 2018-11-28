@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(PlayerController))]
 public class ShootController : MonoBehaviour
 {
     //Delegates

@@ -18,7 +18,7 @@ public class DamageController : MonoBehaviour {
 
     private void Damage()
     {
-        c.GetComponent<PlayerController>().Damage(damageAmount * Time.deltaTime);
+        c.GetComponent<EntityController>().Damage(damageAmount * Time.deltaTime);
     }
 
     private void OnTriggerStay(Collider other)

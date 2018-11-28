@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(EntityController))]
 [RequireComponent(typeof(AimController))]
 [RequireComponent(typeof(ShootController))]
-public class PlayerController : EntityController {
+public class PlayerController : MonoBehaviour {
 
     //Delegates
     public delegate void ManaLevelEventListener();
@@ -42,12 +43,12 @@ public class PlayerController : EntityController {
         set { if (stamina + value > PlayerProperties.maxStamina) stamina = PlayerProperties.maxStamina; else if (stamina + value < 0) stamina = 0; else stamina += value; OnStaminaChanged(); }
     }
 
-    protected override void Start () {
+    protected void Start () {
         Reset();
 	}
 	
-	protected override void Update () {
-        Health = 0; //debugging
+	protected void Update () {
+        //Health = 0; //debugging
 
         //Update Mana Level from field
         ManaLevel = ManaField.Instance.GetManaSample(transform.position);
@@ -58,20 +59,21 @@ public class PlayerController : EntityController {
         if(!UsingStamina)
             Stamina = 0.01f * PlayerProperties.staminaRecoveryRate;
 
-        //if player regenerates, increase by rate
-        if (EntityProperties.regen)
-            Health = 0.01f * EntityProperties.healthRecoverRate;
+        ////if player regenerates, increase by rate
+        //if (EntityProperties.regen)
+        //    Health = 0.01f * EntityProperties.healthRecoverRate;
 
-        if (Health < 0)
-        {
-            //Do Something...
-        }
+        ////NOTE We Dont want to do this
+        //if (Health < 0)
+        //{
+        //    //Do Something...
+        //}
     }
 
     //Resets Properties
-    protected override void Reset()
+    protected void Reset()
     {
-        Health = EntityProperties.maxHealth + 1;
+        //Health = EntityProperties.maxHealth + 1;
         Mana = PlayerProperties.maxMana;
         Stamina = PlayerProperties.maxStamina;
     }
