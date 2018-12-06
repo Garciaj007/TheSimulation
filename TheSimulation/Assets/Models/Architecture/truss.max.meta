@@ -1,0 +1,148 @@
+fileFormatVersion: 2
+guid: 0934b47070842c140a3fffb18c34a21d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: BasePlatform
+    100002: CircularTruss
+    100004: LinearTruss
+    100006: LinearTrussH
+    100008: Screws
+    100010: Screws001
+    100012: Screws002
+    100014: Screws003
+    100016: SemiCircleTruss
+    100018: SquareTruss
+    100020: //RootNode
+    100022: TrussBase
+    100024: TrussBase 1
+    400000: BasePlatform
+    400002: CircularTruss
+    400004: LinearTruss
+    400006: LinearTrussH
+    400008: Screws
+    400010: Screws001
+    400012: Screws002
+    400014: Screws003
+    400016: SemiCircleTruss
+    400018: SquareTruss
+    400020: //RootNode
+    400022: TrussBase
+    400024: TrussBase 1
+    2100000: No Name
+    2300000: BasePlatform
+    2300002: CircularTruss
+    2300004: LinearTruss
+    2300006: LinearTrussH
+    2300008: Screws
+    2300010: Screws001
+    2300012: Screws002
+    2300014: Screws003
+    2300016: SemiCircleTruss
+    2300018: SquareTruss
+    2300020: TrussBase 1
+    3300000: BasePlatform
+    3300002: CircularTruss
+    3300004: LinearTruss
+    3300006: LinearTrussH
+    3300008: Screws
+    3300010: Screws001
+    3300012: Screws002
+    3300014: Screws003
+    3300016: SemiCircleTruss
+    3300018: SquareTruss
+    3300020: TrussBase 1
+    4300000: CircularTruss
+    4300002: SemiCircleTruss
+    4300004: LinearTruss
+    4300006: TrussBase
+    4300008: BasePlatform
+    4300010: Screws
+    4300012: Screws001
+    4300014: Screws002
+    4300016: Screws003
+    4300018: SquareTruss
+    4300020: LinearTrussH
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

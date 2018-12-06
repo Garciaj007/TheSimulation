@@ -113,6 +113,7 @@ public class Ice_Freeze : Spell
     }
 }
 
+//Burns Targets
 public class Fire_Burn : Spell
 {
     public Fire_Burn(PlayerController p) : base(p, Rules.ElementalType.Fire)

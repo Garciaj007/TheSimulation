@@ -5,6 +5,32 @@ public struct Rules
 {
     //Spell Type
     public enum ElementalType : int { Fire, Water, Ice, Wind, Earth, Time, Force }
+    //This is more for Alchemy, and law of compatibility
+
+
+    //Input Type
+    public enum SystemInput : int { Passive, Forward, Back, Up, Down, Right, Left, View, Auto, Select, Spacial, Dimentional }
+    //There are many Type of input that can be created
+
+    // 1 - None(Passive), No input is needed, because spell is applied locally, to player itself or neighboring elements of player.
+
+    // 1 A - Forward, cast a spell in the direction player is facing
+    // 1 B - Back, cast a spell opposite to the direction player is facing
+    // 1 C - Up, cast a spell above 
+    // 1 D - Down, cast a spell downwards
+    // 1 E - Left, cast a spell left
+    // 1 F - Right, cast a spell Right
+    // 1 G - View, cast a spell in the direction of view
+    // 1 H - Auto, calculate a spell depending on enviromental factors (mana cost intensive)
+
+    // 2 - Most Common and simplest is the Ray-Collider Input, where a spells only input is a ray and a target.
+    //Example: flipping the gravity of an object, setting an object on fire, using a specific object that only needs one point or etc.
+
+    // 3 - Complex Input
+    //1-D Points in Space, this spawns a spell/uses a location in space to activate a spell.
+    //Using a ray find the value t where 0 < t < max and use that location (Vector3 Component)
+
+    // 4 - N Points in Space, a number of points in space are needed for a spell to function properly
 }
 
 //Spell Properties
