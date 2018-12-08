@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 
+[System.Serializable]
 public class MenuManager : MonoBehaviour {
 
     [Header("Animators")]
@@ -21,90 +22,80 @@ public class MenuManager : MonoBehaviour {
     public GameObject assistPanel;
     public GameObject creditsPanel;
 
-    [Header("Prefabs")]
-    public GameObject sliderPanel;
-    public GameObject selectionPanel;
-    public GameObject imagePanel;
-    public GameObject headerPanel;
-    public GameObject divider;
-
     //Singleton
     public static MenuManager Instance { get; private set; }
 
-    private void Awake()
+    protected void Awake()
     {
         if(Instance == null)
             Instance = this;
     }
-	
-	//private void Selection () {
- //       switch (e_MainMenu)
- //       {
- //           case MainMenuEvents.Null: break;
- //           case MainMenuEvents.Play: //Do Something
- //               break;
- //           case MainMenuEvents.Settings: //Do Something
- //               break;
- //           case MainMenuEvents.Quit: //Do Something
- //               break;
- //       }
-	//}
 
     //------------------------- Default State ---------------------------------
 
-    public void MainMenu()
+    public virtual void DefaultMenu()
+    {
+        HidePanels();
+        mainAnim.SetInteger("State", 0);
+    }
+
+    public virtual void HidePanels()
     {
         DisplayPanel(playAnim, false);
         DisplayPanel(confirmAnim, false);
-
-        mainAnim.SetInteger("State", 0);
     }
 
     //------------------------ Main Menu Methods ------------------------------
 
     public void Play()
     {
+        HidePanels();
         DisplayPanel(playAnim, true);
     }
 
     public void Settings()
     {
+        HidePanels();
         mainAnim.SetInteger("State", 1);
         Video(overlay.transform);
     }
 
     public void Quit()
     {
+        HidePanels();
         DisplayPanel(confirmAnim, true);
     }
 
     // -------------------------- Confirm Menu Methods ---------------------
 
-    public void ConfirmYes()
+    public virtual void ConfirmYes(int option)
     {
         Application.Quit();
     } 
 
     public void ConfirmNo()
     {
-        MainMenu();
+        DefaultMenu();
     }
 
     //------------------------- Play Menu Methods --------------------------
 
     public void Resume()
     {
+        HidePanels();
         Debug.Log("Resumes Saved Game......");
     }
 
     public void NewGame()
     {
+        HidePanels();
         mainAnim.SetInteger("State", 2);
         Debug.Log("Not Implemented Yet...");
     }
 
     public void Online()
     {
+        HidePanels();
         mainAnim.SetInteger("State", 3);
     }
 

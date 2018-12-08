@@ -23,9 +23,17 @@ public class LookSenseController : SenseController {
         Vector3 rightRay = frontRay;
         rightRay.x -= FOV * 0.5f;
 
+        Vector3 upRay = frontRay;
+        upRay.y += FOV * 0.5f;
+
+        Vector3 downRay = frontRay;
+        downRay.y -= FOV * 0.5f;
+
         Debug.DrawLine(transform.position, frontRay, Color.green);
         Debug.DrawLine(transform.position, leftRay, Color.green);
         Debug.DrawLine(transform.position, rightRay, Color.green);
+        Debug.DrawLine(transform.position, upRay, Color.green);
+        Debug.DrawLine(transform.position, downRay, Color.green);
     }
 
     protected override void Initialize()

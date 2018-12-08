@@ -1,0 +1,226 @@
+fileFormatVersion: 2
+guid: c5bd5069460231848b06d7bb9830fad4
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature_001
+    100002: Body
+    100004: Body_001
+    100006: Body_Down
+    100008: Body_Up
+    100010: Bone_001
+    100012: Leg1
+    100014: Leg10
+    100016: Leg10_001
+    100018: Leg10_002
+    100020: Leg10_003
+    100022: Leg11
+    100024: Leg11_001
+    100026: Leg11_002
+    100028: Leg11_003
+    100030: Leg12
+    100032: Leg12_001
+    100034: Leg12_002
+    100036: Leg12_003
+    100038: Leg1_001
+    100040: Leg1_002
+    100042: Leg1_003
+    100044: Leg2
+    100046: Leg2_001
+    100048: Leg2_002
+    100050: Leg2_003
+    100052: Leg3
+    100054: Leg3_001
+    100056: Leg3_002
+    100058: Leg3_003
+    100060: Leg4
+    100062: Leg4_001
+    100064: Leg4_002
+    100066: Leg4_003
+    100068: Leg5
+    100070: Leg5_001
+    100072: Leg5_002
+    100074: Leg5_003
+    100076: Leg6
+    100078: Leg6_001
+    100080: Leg6_002
+    100082: Leg6_003
+    100084: Leg7
+    100086: Leg7_001
+    100088: Leg7_002
+    100090: Leg7_003
+    100092: Leg8
+    100094: Leg8_001
+    100096: Leg8_002
+    100098: Leg8_003
+    100100: Leg9
+    100102: Leg9_001
+    100104: Leg9_002
+    100106: Leg9_003
+    100108: root_2
+    100110: root_2_001
+    100112: //RootNode
+    100114: Sphere-Bot
+    400000: Armature_001
+    400002: Body
+    400004: Body_001
+    400006: Body_Down
+    400008: Body_Up
+    400010: Bone_001
+    400012: Leg1
+    400014: Leg10
+    400016: Leg10_001
+    400018: Leg10_002
+    400020: Leg10_003
+    400022: Leg11
+    400024: Leg11_001
+    400026: Leg11_002
+    400028: Leg11_003
+    400030: Leg12
+    400032: Leg12_001
+    400034: Leg12_002
+    400036: Leg12_003
+    400038: Leg1_001
+    400040: Leg1_002
+    400042: Leg1_003
+    400044: Leg2
+    400046: Leg2_001
+    400048: Leg2_002
+    400050: Leg2_003
+    400052: Leg3
+    400054: Leg3_001
+    400056: Leg3_002
+    400058: Leg3_003
+    400060: Leg4
+    400062: Leg4_001
+    400064: Leg4_002
+    400066: Leg4_003
+    400068: Leg5
+    400070: Leg5_001
+    400072: Leg5_002
+    400074: Leg5_003
+    400076: Leg6
+    400078: Leg6_001
+    400080: Leg6_002
+    400082: Leg6_003
+    400084: Leg7
+    400086: Leg7_001
+    400088: Leg7_002
+    400090: Leg7_003
+    400092: Leg8
+    400094: Leg8_001
+    400096: Leg8_002
+    400098: Leg8_003
+    400100: Leg9
+    400102: Leg9_001
+    400104: Leg9_002
+    400106: Leg9_003
+    400108: root_2
+    400110: root_2_001
+    400112: //RootNode
+    400114: Sphere-Bot
+    2100000: Sphere_Bot__Leg_Ao_001
+    2100002: Sphere_Bot__Leg_Nor_001
+    2100004: Material_003
+    2100006: Material_004
+    4300000: Sphere-Bot
+    7400000: Default Take
+    7400002: 01_Sphere_bot_Roll
+    7400004: 01_Sphere_bot_Roll_001
+    7400006: 02_Sphere_bot_Run_Cycle
+    7400008: 03_Sphere_bot_Open
+    7400010: 03_Sphere_bot_Open_001
+    7400012: 04_Sphere_bot_Attack
+    7400014: 05_Sphere_bot_WalkCycle
+    7400016: 05_Sphere_bot_WalkCycle_001
+    7400018: 06_Sphere_bot_Run_Attack
+    7400020: 06_Sphere_bot_Run_Attack_001
+    7400022: 07_Sphere_bot_Jump
+    7400024: 07_Sphere_bot_Jump_001
+    7400026: 08_Sphere_bot_Bake_Pose
+    7400028: 08_Sphere_bot_Bake_Pose_001
+    9500000: //RootNode
+    13700000: Sphere-Bot
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
