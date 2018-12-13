@@ -26,7 +26,7 @@ public class EntityController : MonoBehaviour {
     public float Health
     {
         get { return health; }
-        set { if (health + value > EntityProperties.maxHealth) { health = EntityProperties.maxHealth; } else if (health + value < 0) { health = 0; OnDeath(); } else { health += value; OnHealthChanged(); } }
+        set { if (health + value > EntityProperties.maxHealth) health = EntityProperties.maxHealth; else if (health + value < 0) { health = 0; OnHealthChanged(); OnDeath(); } else health += value; OnHealthChanged(); }
     }
 
     protected virtual void Start()

@@ -9,12 +9,27 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
+        if(Instance != null)
+        {
+            Destroy(Instance);
+        }
         Instance = this;
         DontDestroyOnLoad(this);
+
+        SetupMasterSpellLibrary();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void SetupMasterSpellLibrary()
+    {
+        SpellLibrary.AddSpell(new Force_MoveObject());
+        SpellLibrary.AddSpell(new Force_NeutraliseGravity());
+        SpellLibrary.AddSpell(new Force_FlipGravity());
+        SpellLibrary.AddSpell(new Ice_Freeze());
+        SpellLibrary.AddSpell(new Fire_Burn());
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 

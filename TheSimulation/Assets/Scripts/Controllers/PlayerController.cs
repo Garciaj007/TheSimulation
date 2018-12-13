@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour {
     public float Mana
     {
         get { return mana; }
-        set { if (mana + value > PlayerProperties.maxMana) mana = PlayerProperties.maxMana; else if (mana + value < 0) mana = 0; else mana += value; OnManaChanged(); }
+        set { if (mana + value > PlayerProperties.maxMana) mana = PlayerProperties.maxMana; else if (mana + value < 0) mana = 0;  else mana += value; OnManaChanged(); }
     }
 
     public float Stamina
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 
         //if not using stamina increase by rate specified by player
         if(!UsingStamina)
-            Stamina = 0.01f * PlayerProperties.staminaRecoveryRate;
+            Stamina = 0.001f * PlayerProperties.staminaRecoveryRate;
 
         ////if player regenerates, increase by rate
         //if (EntityProperties.regen)
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     //Recover Stamina by amount
-    protected void RecoverStamina(float amount)
+    public void RecoverStamina(float amount)
     {
         Stamina = amount;
     }

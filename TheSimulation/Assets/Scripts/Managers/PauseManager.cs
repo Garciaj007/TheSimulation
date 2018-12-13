@@ -14,6 +14,7 @@ public class PauseManager : MenuManager {
 
         if (Input.GetKeyDown(KeyCode.Escape) && !Paused)
         {
+            DefaultMenu();
             Cursor.visible = true;
             Paused = true;
         } else if (Input.GetKeyDown(KeyCode.Escape))

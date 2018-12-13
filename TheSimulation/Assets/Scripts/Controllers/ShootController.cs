@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(PlayerController))]
 public class ShootController : MonoBehaviour
@@ -16,10 +18,9 @@ public class ShootController : MonoBehaviour
     //Public Members
     public float maxDistance;
     public LayerMask mask;
-    public Spell[] spells;
 
     //Private members
-    private PlayerController player;
+    public List<Spell> spells = new List<Spell>();
     private Camera playerCam;
     private Timer cooldown;
     private int index = 0;
@@ -31,7 +32,6 @@ public class ShootController : MonoBehaviour
     void Start()
     {
         //Get Componenets
-        player = GetComponent<PlayerController>();
         playerCam = GetComponentInChildren<Camera>();
 
         //Add a timer
@@ -39,12 +39,12 @@ public class ShootController : MonoBehaviour
         cooldown.TimerDone += Shoot;
 
         //Add Spells
-        spells = new Spell[5];
-        spells[0] = new Force_MoveObject(player);
-        spells[1] = new Force_NeutraliseGravity(player);
-        spells[2] = new Force_FlipGravity(player);
-        spells[3] = new Ice_Freeze(player);
-        spells[4] = new Fire_Burn(player);
+        SpellLibrary.GetSpell(ref spells, this);
+        
+        //AddSpell(new Force_NeutraliseGravity(player));
+        //AddSpell(new Force_FlipGravity(player));
+        //AddSpell(new Ice_Freeze(player));
+        //AddSpell(new Fire_Burn(player));
 
         //Get Current Spell
         CurrentSpell = spells[0];
@@ -158,13 +158,20 @@ public class ShootController : MonoBehaviour
 
         //limits index to the spell Array
         if (index < 0)
-            index = spells.Length - 1;
-        if (index > spells.Length - 1)
+            index = spells.Count - 1;
+        if (index > spells.Count - 1)
             index = 0;
 
         //Set Current Spell
         CurrentSpell = spells[index];
         OnSpellSwitched();
+    }
+
+    public void AddSpell(Spell s)
+    {
+        s.Player = GetComponent<PlayerController>();
+        s.Entity = GetComponent<EntityController>();
+        spells.Add(s);
     }
 
     //When Spell has been Switched
