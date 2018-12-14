@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4014239219297426}
   - component: {fileID: 33150512711839264}
   - component: {fileID: 23965320193025106}
+  - component: {fileID: 64900343619132738}
   m_Layer: 0
   m_Name: CircularTruss
   m_TagString: Untagged
@@ -35,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083733852869432}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 16.718273, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 541.41675, y: 5.418085, z: 366.9704}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,4 +83,18 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083733852869432}
+  m_Mesh: {fileID: 4300000, guid: 0934b47070842c140a3fffb18c34a21d, type: 3}
+--- !u!64 &64900343619132738
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083733852869432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 0934b47070842c140a3fffb18c34a21d, type: 3}

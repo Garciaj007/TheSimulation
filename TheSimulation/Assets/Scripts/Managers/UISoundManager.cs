@@ -20,7 +20,7 @@ public class UISoundManager : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             source.PlayOneShot(mouseDownClip);
         }

@@ -16,7 +16,8 @@ public class Force_MoveObject : Spell {
         if (hit.rigidbody)
         {
             Use();
-            hit.rigidbody.AddForce(Vector3.forward * 100f);
+            Vector3 direction = hit.transform.position - Player.transform.position;
+            hit.rigidbody.AddForce(direction * 100f);
             return true;
         } else
         {

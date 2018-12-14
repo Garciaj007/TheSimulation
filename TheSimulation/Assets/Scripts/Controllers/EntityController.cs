@@ -22,11 +22,12 @@ public class EntityController : MonoBehaviour {
     //Properties
     public Rules.ElementalType Type { get { return type; } }
     public EntityProperties EntityProperties { get { return entityProperties; } set { entityProperties = value; } }
+    public bool CanDamage { get; set; } 
 
     public float Health
     {
         get { return health; }
-        set { if (health + value > EntityProperties.maxHealth) health = EntityProperties.maxHealth; else if (health + value < 0) { health = 0; OnHealthChanged(); OnDeath(); } else health += value; OnHealthChanged(); }
+        set { if (health + value > EntityProperties.maxHealth) { health = EntityProperties.maxHealth; OnHealthChanged(); } else if (health + value < 0) { health = 0; OnHealthChanged(); OnDeath(); } else health += value; OnHealthChanged(); }
     }
 
     protected virtual void Start()
@@ -35,6 +36,8 @@ public class EntityController : MonoBehaviour {
         destroyTimer.Duration = deathDelay;
         destroyTimer.TimerDone += Destroy;
         destroyTimer.OneShot = true;
+
+        CanDamage = true;
 
         Reset();
     }
@@ -59,15 +62,18 @@ public class EntityController : MonoBehaviour {
     //Damages by amount
     public void Damage(float amount)
     {
+        if(CanDamage)
         Health = -amount;
     }
 
     protected virtual void Destroy()
     {
-        destroyTimer.TimerDone -= Destroy;
-        Destroy(gameObject);
+        if (entityProperties.destroyOnDeath)
+        {
+            destroyTimer.TimerDone -= Destroy;
+            Destroy(gameObject);
+        }
     }
-
 
     protected virtual void Reset()
     {
@@ -98,6 +104,7 @@ public class EntityController : MonoBehaviour {
 [System.Serializable]
 public class EntityProperties
 {
+    public bool destroyOnDeath = true;
     [Header("Max")]
     public float maxHealth; //Max Health
     [Header("Rates")]

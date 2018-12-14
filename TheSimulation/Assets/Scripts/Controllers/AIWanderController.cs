@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(AIController))]
 public class AIWanderController : MonoBehaviour
 {
     private Vector3 target;
     private NavMeshAgent navMeshAgent;
+    private AIController controller;
 
     public float maxDistance = 5.0f;
     public float targetPositionTolerance = 3.0f;
@@ -18,18 +18,20 @@ public class AIWanderController : MonoBehaviour
 
     private void Start()
     {
+        controller = GetComponent<AIController>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         GetNextPosition();
     }
 
     private void Update()
     {
-        if (Vector3.Distance(target, transform.position) <= targetPositionTolerance)
+        if (controller.state == AIController.AIState.Wander)
         {
-            GetNextPosition();
-        }
+            if (Vector3.Distance(target, transform.position) <= targetPositionTolerance)
+                GetNextPosition();
 
-        navMeshAgent.SetDestination(target);
+            navMeshAgent.SetDestination(target);
+        }
     }
 
     private void GetNextPosition()
@@ -48,4 +50,5 @@ public class AIWanderController : MonoBehaviour
             GetNextPosition();
         }
     }
+
 }

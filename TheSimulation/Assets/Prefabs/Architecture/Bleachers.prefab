@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4985563239492400}
   - component: {fileID: 33246721463096310}
   - component: {fileID: 23826914812241428}
+  - component: {fileID: 65838444787646188}
   m_Layer: 0
   m_Name: Bleachers
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1746021714177550}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 587.33344, y: 6.1601295, z: 398.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1746021714177550}
   m_Mesh: {fileID: 4300000, guid: fe2fae6d57529724b897a0a648f7ddd0, type: 3}
+--- !u!65 &65838444787646188
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746021714177550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.705261, y: 3.6601412, z: 5.6886168}
+  m_Center: {x: 0.18525076, y: 0.65994084, z: -0.17076445}

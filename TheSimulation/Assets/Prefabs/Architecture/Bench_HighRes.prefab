@@ -19,6 +19,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4484389479188818}
+  - component: {fileID: 65523550887719624}
+  - component: {fileID: 54039423629088260}
+  - component: {fileID: 114375573787289700}
   m_Layer: 0
   m_Name: Bench_HighRes
   m_TagString: Untagged
@@ -63,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1041166086660940}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.4479046, y: 4.863495e-17, z: -43.806465}
+  m_LocalPosition: {x: 588.8828, y: 4.99, z: 406.79538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4147990374753542}
@@ -112,3 +115,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1889846563153720}
   m_Mesh: {fileID: 4300000, guid: 471f5be19d1ec1f4eacafd14e2a423e9, type: 3}
+--- !u!54 &54039423629088260
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041166086660940}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65523550887719624
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041166086660940}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &114375573787289700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041166086660940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746f5bfa5748bd045a054842a5145496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  deathDelay: 0
+  type: 0
+  entityProperties:
+    maxHealth: 100
+    healthRecoverRate: 0
+    regen: 0

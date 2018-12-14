@@ -121,6 +121,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4727403068144714}
+  - component: {fileID: 65246694674075344}
+  - component: {fileID: 54021519452134240}
+  - component: {fileID: 114621642422491330}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -294,7 +297,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1387286995993030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.44368, y: 1.1120343, z: -76.38607}
+  m_LocalPosition: {x: 525.1682, y: 6.102034, z: 369.27405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4518340496694936}
@@ -769,3 +772,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360752172649494}
   m_Mesh: {fileID: 4300016, guid: 6df3fa0757d59ca4fb257197f0a6fb02, type: 3}
+--- !u!54 &54021519452134240
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387286995993030}
+  serializedVersion: 2
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65246694674075344
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387286995993030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9, y: 4, z: 3.5}
+  m_Center: {x: -0.16, y: 1, z: -0.6}
+--- !u!114 &114621642422491330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387286995993030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746f5bfa5748bd045a054842a5145496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10000
+  deathDelay: 0
+  type: 6
+  entityProperties:
+    maxHealth: 10000
+    healthRecoverRate: 0
+    regen: 0

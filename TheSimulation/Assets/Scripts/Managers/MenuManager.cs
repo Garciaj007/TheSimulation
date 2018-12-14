@@ -83,7 +83,7 @@ public class MenuManager : MonoBehaviour {
     public void Resume()
     {
         HidePanels();
-        Debug.Log("Resumes Saved Game......");
+        GameManager.Instance.ForestLevel();
     }
 
     public void NewGame()
@@ -196,6 +196,7 @@ public class MenuManager : MonoBehaviour {
 
     public void DisplayPanel(Animator anim, bool b)
     {
+        if(anim)
         anim.SetBool("Display", b);
     }
 }

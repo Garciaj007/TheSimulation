@@ -31,6 +31,12 @@ public class SoundManager : MonoBehaviour {
 
     private void Start()
     {
+        mixer.SetFloat("MasterVol", Utilities.Map(masterSlider.value / 100.0f, 0.0f, 1.0f, -40.0f, 6.0f));
+        mixer.SetFloat("MusicVol", Utilities.Map(musicSlider.value / 100.0f, 0.0f, 1.0f, -40.0f, 6.0f));
+        mixer.SetFloat("SFXVol", Utilities.Map(sfxSlider.value / 100.0f, 0.0f, 1.0f, -40.0f, 6.0f));
+        mixer.SetFloat("AmbientVol", Utilities.Map(ambientSlider.value / 100.0f, 0.0f, 1.0f, -40.0f, 6.0f));
+        mixer.SetFloat("UIVol", Utilities.Map(uiSFXSlider.value / 100.0f, 0.0f, 1.0f, -40.0f, 6.0f));
+
         masterVal.text = masterSlider.value.ToString();
         musicVal.text = musicSlider.value.ToString();
         sfxVal.text = sfxSlider.value.ToString();
@@ -40,7 +46,7 @@ public class SoundManager : MonoBehaviour {
 
     public void MasterVolumeChange()
     {
-        float vol = Utilities.Map(masterSlider.value / 100.0f, 0.0f, 1.0f, -80.0f, 20.0f);
+        float vol = Utilities.Map(masterSlider.value / 100.0f, 0.0f, 1.0f, -40.0f, 6.0f);
         mixer.SetFloat("MasterVol", vol);
         masterVal.text = masterSlider.value.ToString();
         PlayerPrefs.SetFloat("MasterVol", vol);
@@ -48,7 +54,7 @@ public class SoundManager : MonoBehaviour {
 
     public void MusicVolumeChanged()
     {
-        float vol = Utilities.Map(musicSlider.value / 100.0f, 0.0f, 1.0f, -80.0f, 20.0f);
+        float vol = Utilities.Map(musicSlider.value / 100.0f, 0.0f, 1.0f, -40.0f, 6.0f);
         mixer.SetFloat("MusicVol", vol);
         musicVal.text = musicSlider.value.ToString();
         PlayerPrefs.SetFloat("MusicVol", vol);
@@ -56,7 +62,7 @@ public class SoundManager : MonoBehaviour {
 
     public void SFXVolumeChanged()
     {
-        float vol = Utilities.Map(sfxSlider.value / 100.0f, 0.0f, 1.0f, -80.0f, 20.0f);
+        float vol = Utilities.Map(sfxSlider.value / 100.0f, 0.0f, 1.0f, -40.0f, 6.0f);
         mixer.SetFloat("SFXVol", vol);
         sfxVal.text = sfxSlider.value.ToString();
         PlayerPrefs.SetFloat("SFXVol", vol);
@@ -64,7 +70,7 @@ public class SoundManager : MonoBehaviour {
 
     public void AmbientVolumeChanged()
     {
-        float vol = Utilities.Map(ambientSlider.value / 100.0f, 0.0f, 1.0f, -80.0f, 20.0f);
+        float vol = Utilities.Map(ambientSlider.value / 100.0f, 0.0f, 1.0f, -40.0f, 6.0f);
         mixer.SetFloat("AmbientVol", vol);
         ambientVal.text = ambientSlider.value.ToString();
         PlayerPrefs.SetFloat("AmbientVol", vol);
@@ -72,7 +78,7 @@ public class SoundManager : MonoBehaviour {
 
     public void UIVolumeChanged()
     {
-        float vol = Utilities.Map(uiSFXSlider.value / 100.0f, 0.0f, 1.0f, -80.0f, 20.0f);
+        float vol = Utilities.Map(uiSFXSlider.value / 100.0f, 0.0f, 1.0f, -40.0f, 6.0f);
         mixer.SetFloat("UIVol", vol);
         uiVal.text = uiSFXSlider.value.ToString();
         PlayerPrefs.SetFloat("UIVol", vol);

@@ -19,11 +19,17 @@ public class PauseManager : MenuManager {
             Paused = true;
         } else if (Input.GetKeyDown(KeyCode.Escape))
         {
+            DefaultMenu();
             Paused = false;
             Cursor.visible = false;
         }
 
         DisplayPanel(pauseAnim, Paused);
+
+        //if (Paused)
+        //    Time.timeScale = 0;
+        //else
+        //    Time.timeScale = 1;
     }
 
     public void UnPause()
@@ -43,7 +49,7 @@ public class PauseManager : MenuManager {
         if (option == 0)
             Application.Quit();
         else
-            Debug.Log("Exiting to Menu");
+            GameManager.Instance.MainMenu();
     }
 
     public override void DefaultMenu()

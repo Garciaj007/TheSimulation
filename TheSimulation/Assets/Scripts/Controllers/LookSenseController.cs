@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class LookSenseController : SenseController {
 
     public int FOV = 45;
     public int viewDistance = 100;
 
+    [SerializeField]
     private Transform playerTransform;
     private Vector3 rayDirection;
 
@@ -59,15 +61,22 @@ public class LookSenseController : SenseController {
         {
             if(Physics.Raycast(transform.position, rayDirection, out hit, viewDistance))
             {
-                Identifier ident = hit.collider.GetComponent<Identifier>();
-                if(ident != null)
+                Identifier id = hit.collider.GetComponent<Identifier>();
+                if(id != null)
                 {
-                    if(ident.identity != identity)
+                    if (controller != null)
                     {
-                        Debug.Log("Enemy Detected");
+                        if (id.identity != identity)
+                        {
+                            controller.playerVisable = true;
+                            return;
+                        }
                     }
                 }
             }
         }
+
+        if(controller != null)
+        controller.playerVisable = false;
     }
 }

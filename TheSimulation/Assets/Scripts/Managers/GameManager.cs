@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public GameManager Instance { get; private set; }
-    public List<GameObject> players;
-    public List<GameObject> enemies;
+    public static GameManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -15,41 +13,25 @@ public class GameManager : MonoBehaviour {
         }
         Instance = this;
         DontDestroyOnLoad(this);
-
-        SetupMasterSpellLibrary();
     }
 
-    void SetupMasterSpellLibrary()
+    public void MainMenu()
     {
-        SpellLibrary.AddSpell(new Force_MoveObject());
-        SpellLibrary.AddSpell(new Force_NeutraliseGravity());
-        SpellLibrary.AddSpell(new Force_FlipGravity());
-        SpellLibrary.AddSpell(new Ice_Freeze());
-        SpellLibrary.AddSpell(new Fire_Burn());
+        SceneManager.LoadScene(0);
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
-
-    public void AddPlayer(GameObject player)
+    public void TutorialLevel()
     {
-        players.Add(player);
+        SceneManager.LoadScene(1);
     }
 
-    public void AddEnemy(GameObject enemy)
+    public void ForestLevel()
     {
-        enemies.Add(enemy);
+        SceneManager.LoadScene(2);
     }
 
-    public void RemovePlayer(GameObject player)
+    public void HarbourLevel()
     {
-        players.Remove(player);
-    }
-
-    public void RemoveEnemy(GameObject enemy)
-    {
-        players.Remove(enemy);
+        SceneManager.LoadScene(3);
     }
 }
